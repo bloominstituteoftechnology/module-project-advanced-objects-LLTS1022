@@ -58,10 +58,50 @@ class PeterPan {
     // 🧠 Planes have a `down` method, which takes a number of meters as its argument.
     // 🧠 Calling `down` changes the `altitude` prop appropriately and returns the updated `altitude`.
     // 🧠 If calling `down` would cause the plane to go below altitude zero, `altitude` is set to 0 and the string "CRASH!" is returned.
+
     class AirPlane {
+  constructor(model) {
+    this.model = model;
+    this.altitude = 0;
+  }
 
+  up(meters) {
+    this.altitude += meters;
+    return this.altitude;
+  }
+
+  down(meters) {
+    if (this.altitude - meters >= 0) {
+      this.altitude -= meters;
+      return this.altitude;
+    } else {
+      this.altitude = 0;
+      return "CRASH!";
     }
+  }
+}
 
+    /*
+    VIDEOS WAY TO DO IT
+    class AirPlane {
+    constructor(model) {
+      this.model = model
+      this.altitude = 0
+    }
+up(meters) {
+  this.altitude += meters
+  return this.altitude
+}
+down(meters) {
+  if (this.altitude >= meters) {
+  this.altitude -= meters
+  return this.altitude
+}
+this.altitude = 0
+return "CRASH!"
+}
+    }
+*/
     // 👉 CHALLENGE 3
     // 🧠 Build a Bulb class.
     // 🧠 All new bulbs are initialised with a prop `isOn` and three methods: `turnOn`, `turnOff` and `toggle`.
@@ -69,8 +109,25 @@ class PeterPan {
     // 🧠 The methods work as one might expect, changing the value of `isOn` to the appropriate Boolean.
     // 🧠 The methods also return one of these two strings: "You turned the bulb ON", or "You turned the bulb OFF".
     class Bulb {
+  constructor() {
+    this.isOn = false;
+  }
 
-    }
+  turnOn() {
+    this.isOn = true;
+    return "You turned the bulb ON";
+  }
+
+  turnOff() {
+    this.isOn = false;
+    return "You turned the bulb OFF";
+  }
+
+  toggle() {
+    this.isOn = !this.isOn;
+    return this.isOn ? "You turned the bulb ON" : "You turned the bulb OFF";
+  }
+}
 
     // 👉 CHALLENGE 4
     // 🧠 Build a CountDown class that can count down starting at any number we pass to the constructor.
@@ -87,8 +144,22 @@ class PeterPan {
     //   minusThree.count() // returns null
     //   minusThree.count() // returns null
     class CountDown {
-
+  constructor(num) {
+    this.currentNum = num
+  }
+  count() {
+    if (this.currentNum >= 1) {
+      const oldValue = this.currentNum
+      this.currentNum--
+      return `${oldValue}!`
+    } else if (this.currentNum === 0) {
+      this.currentNum--
+      return "Liftoff!"
+    } else {
+      return null
     }
+  }
+}
 
     // 🧪 TESTS, do not work below this line
     // 🧪 TESTS, do not work below this line
